@@ -60,15 +60,16 @@
 
 IEX_EXPORT void iex_debugTrap();
 
-#define THROW(type, text)       \
-    do                          \
-    {                           \
-        iex_debugTrap();        \
-        std::stringstream s;	\
-        s << text;              \
-        throw type (s);         \
-    }                           \
-    while (0)
+#define THROW(...)
+// #define THROW(type, text)       \
+//     do                          \
+//     {                           \
+//         iex_debugTrap();        \
+//         std::stringstream s;	\
+//         s << text;              \
+//         throw type (s);         \
+//     }                           \
+//     while (0)
 
 
 //----------------------------------------------------------------------------

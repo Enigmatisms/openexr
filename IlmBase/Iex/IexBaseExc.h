@@ -70,13 +70,13 @@ class BaseExc: public std::string, public std::exception
     IEX_EXPORT BaseExc (std::stringstream &s) throw();  // std::string (s.str())
 
     IEX_EXPORT BaseExc (const BaseExc &be) throw();
-    IEX_EXPORT virtual ~BaseExc () throw ();
+    IEX_EXPORT virtual ~BaseExc () noexcept (true);
 
     //--------------------------------------------
     // what() method -- e.what() returns e.c_str()
     //--------------------------------------------
 
-    IEX_EXPORT virtual const char * what () const throw ();
+    IEX_EXPORT virtual const char * what () const noexcept (true);
 
 
     //--------------------------------------------------

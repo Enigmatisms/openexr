@@ -74,7 +74,7 @@ stackTracer ()
 }
 
 
-BaseExc::BaseExc (const char* s) throw () :
+BaseExc::BaseExc (const char* s) noexcept (true) :
     std::string (s? s: ""),
     _stackTrace (currentStackTracer? currentStackTracer(): "")
 {
@@ -82,7 +82,7 @@ BaseExc::BaseExc (const char* s) throw () :
 }
 
 
-BaseExc::BaseExc (const std::string &s) throw () :
+BaseExc::BaseExc (const std::string &s) noexcept (true) :
     std::string (s),
     _stackTrace (currentStackTracer? currentStackTracer(): "")
 {
@@ -90,7 +90,7 @@ BaseExc::BaseExc (const std::string &s) throw () :
 }
 
 
-BaseExc::BaseExc (std::stringstream &s) throw () :
+BaseExc::BaseExc (std::stringstream &s) noexcept (true) :
     std::string (s.str()),
     _stackTrace (currentStackTracer? currentStackTracer(): "")
 {
@@ -98,7 +98,7 @@ BaseExc::BaseExc (std::stringstream &s) throw () :
 }
 
 
-BaseExc::BaseExc (const BaseExc &be) throw () :
+BaseExc::BaseExc (const BaseExc &be) noexcept (true) :
     std::string (be),
     _stackTrace (be._stackTrace)
 {
@@ -106,14 +106,14 @@ BaseExc::BaseExc (const BaseExc &be) throw () :
 }
 
 
-BaseExc::~BaseExc () throw ()
+BaseExc::~BaseExc () noexcept (true)
 {
     // empty
 }
 
 
 const char *
-BaseExc::what () const throw ()
+BaseExc::what () const noexcept (true)
 {
     return c_str();
 }
